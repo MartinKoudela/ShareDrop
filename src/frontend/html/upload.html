@@ -8,30 +8,33 @@
     <title>ShareDrop - Upload</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+    </style>
     <script src="../js/script.js"></script>
 
 </head>
-<body class="bg-gray-50 min-h-screen text-gray-800 flex flex-col">
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-200 flex flex-col transition-colors">
 
-<nav class="bg-white border-b border-gray-200 shadow-sm">
+<nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <h1 class="text-xl font-semibold tracking-tight text-gray-900">ShareDrop</h1>
+        <h1 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">ShareDrop</h1>
         <ul class="flex items-center gap-6 text-sm font-medium">
             <li>
                 <a href="index.html"
-                   class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+                   class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     <i class="fas fa-home"></i>Home
                 </a>
             </li>
             <li>
                 <a href="upload.html"
-                   class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+                   class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     <i class="fas fa-upload"></i>Upload pack
                 </a>
             </li>
             <li>
                 <a href="download.html"
-                   class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+                   class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     <i class="fas fa-download"></i>Download pack
                 </a>
             </li>
@@ -41,27 +44,27 @@
 
 <section class="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
     <div class="max-w-xl mx-auto">
-        <h2 class="text-lg font-semibold text-gray-900 mb-6">Upload a file</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Upload a file</h2>
 
         <label for="file"
-               class="flex flex-col items-center justify-center w-full h-52 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-white hover:border-gray-400 hover:bg-gray-50 transition-colors">
+               class="flex flex-col items-center justify-center w-full h-52 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
             <i class="fas fa-cloud-arrow-up text-3xl text-gray-400 mb-3"></i>
-            <span class="text-sm font-medium text-gray-600">Click to choose a file</span>
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Click to choose a file</span>
             <span class="text-xs text-gray-400 mt-1">or drag and drop</span>
         </label>
         <input type="file" id="file" name="file" class="hidden">
 
-        <div id="upload-status" class="mt-4 text-sm text-gray-500"></div>
+        <div id="upload-status" class="mt-4 text-sm text-gray-500 dark:text-gray-400"></div>
 
-        <label for="hash-input" class="mt-6 flex items-center gap-3 cursor-pointer px-3 py-2 rounded-md border border-transparent has-[:checked]:bg-gray-50 has-[:checked]:border-gray-300 transition-all">
+        <label for="hash-input" class="mt-6 flex items-center gap-3 cursor-pointer px-3 py-2 rounded-md border border-transparent has-[:checked]:bg-gray-50 dark:has-[:checked]:bg-gray-800 has-[:checked]:border-gray-300 dark:has-[:checked]:border-gray-600 transition-all">
             <input type="checkbox" id="hash-input" class="w-4 h-4 accent-gray-900 rounded">
-            <span class="text-sm font-medium text-gray-700">Hash</span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Hash</span>
         </label>
 
-        <label for="hash" class="block mt-2 text-sm font-medium text-gray-700"></label>
+        <label for="hash" class="block mt-2 text-sm font-medium text-gray-700 dark:text-gray-300"></label>
         <input type="text" id="hash">
 
-        <button id="upload-btn" class="mt-6 w-full py-2.5 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors">
+        <button id="upload-btn" class="mt-2 w-full py-2.5 bg-gray-900 dark:bg-gray-100 dark:text-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 dark:hover:bg-gray-300 transition-colors">
             <i class="fas fa-upload mr-2"></i>Upload
         </button>
 
@@ -69,12 +72,17 @@
     </div>
 </section>
 
-<footer class="bg-white border-t border-gray-200 mt-auto">
-    <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between text-sm text-gray-500">
+<footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
         <span id="year">ShareDrop &copy; </span>
-        <a href="https://github.com/" class="hover:text-gray-900 transition-colors">
-            <i class="fab fa-github text-lg"></i>
-        </a>
+        <div class="flex items-center gap-4">
+            <button id="dark-toggle" class="hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer">
+                <i class="fas fa-moon text-lg"></i>
+            </button>
+            <a href="https://github.com/" class="hover:text-gray-900 dark:hover:text-white transition-colors">
+                <i class="fab fa-github text-lg"></i>
+            </a>
+        </div>
     </div>
 </footer>
 
